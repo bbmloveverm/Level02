@@ -52,7 +52,7 @@
             this.tbstart.TabIndex = 1;
             this.tbstart.Enter += new System.EventHandler(this.tbstart_Enter);
             this.tbstart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbstart_KeyPress);
-            this.tbstart.Leave += new System.EventHandler(this.tbstart_Leave);
+            //this.tbstart.Leave += new System.EventHandler(this.tbstart_Leave);
             // 
             // btn_search
             // 
@@ -85,7 +85,7 @@
             this.tbInvestPeerMonth.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             this.tbInvestPeerMonth.Enter += new System.EventHandler(this.tbInvestPeerMonth_Enter);
             this.tbInvestPeerMonth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInvestPeerMonth_KeyPress);
-            this.tbInvestPeerMonth.Leave += new System.EventHandler(this.tbInvestPeerMonth_Leave);
+           // this.tbInvestPeerMonth.Leave += new System.EventHandler(this.tbInvestPeerMonth_Leave);
             // 
             // label2
             // 
@@ -160,8 +160,9 @@
             this.Controls.Add(this.tbstart);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load_1);
-            this.Shown += new System.EventHandler(this.Form1_Shown_1);
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.ctMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DTG01)).EndInit();
             this.ResumeLayout(false);

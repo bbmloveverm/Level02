@@ -7,8 +7,8 @@ namespace Level02
 {
     public partial class Form1 : Form
     {
+        DataSet m_dsMainGrid = new DataSet();
 
-        DataSet m_dsmainGrid = new DataSet();
         public Form1()
         {
             InitializeComponent();
@@ -172,7 +172,7 @@ namespace Level02
         }
 
         //CheckBox format Type
-        private void tbstart_Leave(object sender, EventArgs e)
+      /*  private void tbstart_Leave(object sender, EventArgs e)
         {
             Int32 Inputstartmoney = 0;
 
@@ -186,9 +186,9 @@ namespace Level02
                 MessageBox.Show("Incorect fomat");
                 //tbstart.Text = "";
             }
-        }
+        }*/
 
-        private void tbInvestPeerMonth_Leave(object sender, EventArgs e)
+       /* private void tbInvestPeerMonth_Leave(object sender, EventArgs e)
         {
             Int32 InputInvespeerMonth = 0;
             try
@@ -200,7 +200,7 @@ namespace Level02
                 MessageBox.Show("Incorect fomat");
                 //tbstart.Text = "";
             }
-        }
+        }*/
 
         private void lboutput_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -251,67 +251,49 @@ namespace Level02
             SelectAllRowclick();
         }
 
-        private void Form1_Load_1(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void Form1_Shown_1(object sender, EventArgs e)
+        private void Form1_Shown(object sender, EventArgs e)
         {
-            IntiallizeGridColumn();
+            GridColumn();
         }
 
-
-        private void IntiallizeGridColumn()
+        private void GridColumn()
         {
-            /* DataGridViewColumn myDataGridViewcolumn = new DataGridViewColumn();
-             DataGridViewTextBoxCell dataGridViewTextBoxCell = new DataGridViewTextBoxCell();
-             myDataGridViewcolumn.CellTemplate = dataGridViewTextBoxCell;
-             myDataGridViewcolumn.Name = "ปีที่";
-             DTG01.Columns.Add(myDataGridViewcolumn);*/
-
+            //DataGridViewColumn myDataGridViewColumn = new DataGridViewColumn();
+            //DataGridViewTextBoxCell myDataGridViewTextBoxCell = new DataGridViewTextBoxCell();
+            //myDataGridViewColumn.CellTemplate = myDataGridViewTextBoxCell;
+            //myDataGridViewColumn.Name = "ปีที่";
+            //DTG01.Columns.Add(myDataGridViewColumn);
 
             DataTable myDataTable = new DataTable("MainGrid");
-            m_dsmainGrid.Tables.Add(myDataTable);
+            m_dsMainGrid.Tables.Add(myDataTable);
             DataColumn myDataColumn;
-
-            int ProfitPercent = 5;
-
-            
 
             myDataColumn = new DataColumn();
             myDataColumn.DataType = System.Type.GetType("System.Int32");
             myDataColumn.ColumnName = "ปีที่";
             myDataTable.Columns.Add(myDataColumn);
 
+            myDataColumn = new DataColumn();
+            myDataColumn.DataType = System.Type.GetType("System.Int64");
+            myDataColumn.ColumnName = "เงินต้นปี 5%";
+            myDataTable.Columns.Add(myDataColumn);
 
-            while (ProfitPercent <=50) {
+            myDataColumn = new DataColumn();
+            myDataColumn.DataType = System.Type.GetType("System.Int64");
+            myDataColumn.ColumnName = "กำไล 5%";
+            myDataTable.Columns.Add(myDataColumn);
 
-                myDataColumn = new DataColumn();
-                myDataColumn.DataType = System.Type.GetType("System.Int64");
-                myDataColumn.ColumnName = "เงินต้นปี";
-                myDataTable.Columns.Add(myDataColumn);
+            myDataColumn = new DataColumn();
+            myDataColumn.DataType = System.Type.GetType("System.Int64");
+            myDataColumn.ColumnName = "เงินปลายปี 5%";
+            myDataTable.Columns.Add(myDataColumn);
 
-                myDataColumn = new DataColumn();
-                myDataColumn.DataType = System.Type.GetType("System.Int64");
-                myDataColumn.ColumnName = "กำไล";
-                myDataTable.Columns.Add(myDataColumn);
-
-                myDataColumn = new DataColumn();
-                myDataColumn.DataType = System.Type.GetType("System.Int64");
-                myDataColumn.ColumnName = "เงินปลายปี";
-                myDataTable.Columns.Add(myDataColumn);
-
-                ProfitPercent += 5;
-            }
-            
-
-
-            DTG01.DataSource = m_dsmainGrid.Tables["MainGrid"];
-
-
+            DTG01.DataSource = m_dsMainGrid.Tables["MainGrid"];
         }
-
-        
     }
 }
