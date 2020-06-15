@@ -38,7 +38,9 @@
             this.ctMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.ctSelect = new System.Windows.Forms.ToolStripMenuItem();
+            this.DTG01 = new System.Windows.Forms.DataGridView();
             this.ctMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DTG01)).BeginInit();
             this.SuspendLayout();
             // 
             // tbstart
@@ -97,8 +99,7 @@
             // 
             // lboutput
             // 
-            this.lboutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.lboutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lboutput.ContextMenuStrip = this.ctMenuStrip;
             this.lboutput.FormattingEnabled = true;
@@ -106,7 +107,7 @@
             this.lboutput.Location = new System.Drawing.Point(23, 23);
             this.lboutput.Name = "lboutput";
             this.lboutput.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lboutput.Size = new System.Drawing.Size(752, 394);
+            this.lboutput.Size = new System.Drawing.Size(752, 17);
             this.lboutput.TabIndex = 5;
             this.lboutput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lboutput_KeyPress);
             // 
@@ -116,13 +117,13 @@
             this.ctCopy,
             this.ctSelect});
             this.ctMenuStrip.Name = "ctMenuStrip";
-            this.ctMenuStrip.Size = new System.Drawing.Size(181, 70);
+            this.ctMenuStrip.Size = new System.Drawing.Size(172, 48);
             // 
             // ctCopy
             // 
             this.ctCopy.Image = global::Level02.Properties.Resources.HRMI8;
             this.ctCopy.Name = "ctCopy";
-            this.ctCopy.Size = new System.Drawing.Size(180, 22);
+            this.ctCopy.Size = new System.Drawing.Size(171, 22);
             this.ctCopy.Text = "Copy to Clipboard";
             this.ctCopy.Click += new System.EventHandler(this.ctCopy_Click);
             // 
@@ -130,15 +131,27 @@
             // 
             this.ctSelect.Image = global::Level02.Properties.Resources.HRMI8_Blue;
             this.ctSelect.Name = "ctSelect";
-            this.ctSelect.Size = new System.Drawing.Size(180, 22);
+            this.ctSelect.Size = new System.Drawing.Size(171, 22);
             this.ctSelect.Text = "Select all Row";
             this.ctSelect.Click += new System.EventHandler(this.ctSelect_Click);
+            // 
+            // DTG01
+            // 
+            this.DTG01.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DTG01.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DTG01.Location = new System.Drawing.Point(23, 46);
+            this.DTG01.Name = "DTG01";
+            this.DTG01.Size = new System.Drawing.Size(752, 367);
+            this.DTG01.TabIndex = 6;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.DTG01);
             this.Controls.Add(this.lboutput);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbInvestPeerMonth);
@@ -147,7 +160,10 @@
             this.Controls.Add(this.tbstart);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.ctMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DTG01)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,6 +180,7 @@
         private System.Windows.Forms.ContextMenuStrip ctMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem ctCopy;
         private System.Windows.Forms.ToolStripMenuItem ctSelect;
+        private System.Windows.Forms.DataGridView DTG01;
     }
 }
 

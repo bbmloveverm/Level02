@@ -115,7 +115,10 @@ namespace Level02
                 lboutput.EndUpdate();
                 DateTime endTime = System.DateTime.Now;
                 System.TimeSpan usetime = endTime - startTime;
-                //MessageBox.Show("usrTime :" +usetime.TotalSeconds.ToString()+"วินาที :");
+
+             
+
+                MessageBox.Show("usrTime :" +usetime.TotalSeconds.ToString()+"วินาที :");
 
 
 
@@ -181,6 +184,7 @@ namespace Level02
             }
             catch(Exception Error)
             {
+                
                MessageBox.Show("Incorect fomat");
                 //tbstart.Text = "";
             }
@@ -247,6 +251,25 @@ namespace Level02
         private void ctSelect_Click(object sender, EventArgs e)
         {
             SelectAllRowclick();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            IntiallizeGridColumn();
+        }
+
+       private void IntiallizeGridColumn()
+        {
+            DataGridViewColumn myDataGridViewcolumn = new DataGridViewColumn();
+            DataGridViewTextBoxCell dataGridViewTextBoxCell = new DataGridViewTextBoxCell();
+            myDataGridViewcolumn.CellTemplate = dataGridViewTextBoxCell;
+            myDataGridViewcolumn.Name = "ปีที่";
+            DTG01.Columns.Add(myDataGridViewcolumn);
         }
     }
 }
