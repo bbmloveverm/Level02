@@ -12,6 +12,8 @@ namespace Level02
 {
     public partial class Form1 : Form
     {
+
+        DataSet m_dsmainGrid = new DataSet();
         public Form1()
         {
             InitializeComponent();
@@ -125,6 +127,7 @@ namespace Level02
             }
             
         }
+        
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
@@ -261,15 +264,57 @@ namespace Level02
         private void Form1_Shown(object sender, EventArgs e)
         {
             IntiallizeGridColumn();
+
+          
         }
 
-       private void IntiallizeGridColumn()
+        private void IntiallizeGridColumn()
         {
-            DataGridViewColumn myDataGridViewcolumn = new DataGridViewColumn();
-            DataGridViewTextBoxCell dataGridViewTextBoxCell = new DataGridViewTextBoxCell();
-            myDataGridViewcolumn.CellTemplate = dataGridViewTextBoxCell;
-            myDataGridViewcolumn.Name = "ปีที่";
-            DTG01.Columns.Add(myDataGridViewcolumn);
+            /* DataGridViewColumn myDataGridViewcolumn = new DataGridViewColumn();
+             DataGridViewTextBoxCell dataGridViewTextBoxCell = new DataGridViewTextBoxCell();
+             myDataGridViewcolumn.CellTemplate = dataGridViewTextBoxCell;
+             myDataGridViewcolumn.Name = "ปีที่";
+             DTG01.Columns.Add(myDataGridViewcolumn);*/
+
+         
+            DataTable myDataTable = new DataTable("MainGrid");
+            m_dsmainGrid.Tables.Add(myDataTable);
+            DataColumn myDataColumn;
+
+            int ProfitPercent = 5;
+            
+           
+                myDataColumn = new DataColumn();
+                myDataColumn.DataType = System.Type.GetType("System.Int32");
+                myDataColumn.ColumnName = "ปีที่";
+                myDataTable.Columns.Add(myDataColumn);
+
+            while (ProfitPercent <= 50)
+            {
+
+                myDataColumn = new DataColumn();
+                myDataColumn.DataType = System.Type.GetType("System.Int64");
+                myDataColumn.ColumnName = "เงินต้นปี";
+                myDataTable.Columns.Add(myDataColumn);
+
+                myDataColumn = new DataColumn();
+                myDataColumn.DataType = System.Type.GetType("System.Int64");
+                myDataColumn.ColumnName = "กำไล";
+                myDataTable.Columns.Add(myDataColumn);
+
+                myDataColumn = new DataColumn();
+                myDataColumn.DataType = System.Type.GetType("System.Int64");
+                myDataColumn.ColumnName = "เงินปลายปี";
+                myDataTable.Columns.Add(myDataColumn);
+
+                ProfitPercent += 5;
+
+            }
+
+
+            DTG01.DataSource = m_dsmainGrid.Tables["MainGrid"];
+
+
         }
     }
 }
