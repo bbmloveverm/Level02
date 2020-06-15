@@ -160,6 +160,8 @@
             this.Controls.Add(this.tbstart);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load_1);
+            this.Shown += new System.EventHandler(this.Form1_Shown_1);
             this.ctMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DTG01)).EndInit();
             this.ResumeLayout(false);

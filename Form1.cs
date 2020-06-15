@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Level02
@@ -44,7 +39,7 @@ namespace Level02
             catch (Exception)
             {
                 checkerror = -1;
-                MessageBox.Show("Input data number only","Error!!!",MessageBoxButtons.OK);
+                MessageBox.Show("Input data number only", "Error!!!", MessageBoxButtons.OK);
             }
 
             if (checkerror == 0)
@@ -55,7 +50,7 @@ namespace Level02
                 lboutput.BeginUpdate();
                 lboutput.Items.Clear();
 
-               // List<string> outPut = new List<string>();
+                // List<string> outPut = new List<string>();
 
                 STROUTPUT += "";
                 //for (year=1; year <= 100;year++)
@@ -118,16 +113,16 @@ namespace Level02
                 DateTime endTime = System.DateTime.Now;
                 System.TimeSpan usetime = endTime - startTime;
 
-             
 
-                MessageBox.Show("usrTime :" +usetime.TotalSeconds.ToString()+"วินาที :");
+
+                MessageBox.Show("usrTime :" + usetime.TotalSeconds.ToString() + "วินาที :");
 
 
 
             }
-            
+
         }
-        
+
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
@@ -150,7 +145,7 @@ namespace Level02
                 tbInvestPeerMonth.Focus();
             }
             //check text box number only                 // ยอมให้ Backspace ทำงาน \b ||8
-            if((e.KeyChar < '0' || e.KeyChar > '9') && e.KeyChar != 8)
+            if ((e.KeyChar < '0' || e.KeyChar > '9') && e.KeyChar != 8)
             {
                 e.Handled = true;
             }
@@ -185,10 +180,10 @@ namespace Level02
             {
                 Inputstartmoney = Convert.ToInt32(tbstart.Text);
             }
-            catch(Exception Error)
+            catch (Exception Error)
             {
-                
-               MessageBox.Show("Incorect fomat");
+
+                MessageBox.Show("Incorect fomat");
                 //tbstart.Text = "";
             }
         }
@@ -214,7 +209,7 @@ namespace Level02
                 Copyclick();
 
             }
-            else if(e.KeyChar == 1) //control A
+            else if (e.KeyChar == 1) //control A
             {
                 SelectAllRowclick();
             }
@@ -232,16 +227,16 @@ namespace Level02
                 //CopyText.Append("\r \n");
                 CopyText.AppendLine();
             }
-            CopyText.Remove(CopyText.Length -1,1);
+            CopyText.Remove(CopyText.Length - 1, 1);
             Clipboard.SetText(CopyText.ToString());
         }
 
         private void SelectAllRowclick()
         {
             lboutput.BeginUpdate();
-            for (int i=0; i <lboutput.Items.Count; i++)
+            for (int i = 0; i < lboutput.Items.Count; i++)
             {
-                lboutput.SetSelected(i,true);
+                lboutput.SetSelected(i, true);
             }
             lboutput.EndUpdate();
         }
@@ -256,17 +251,16 @@ namespace Level02
             SelectAllRowclick();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load_1(object sender, EventArgs e)
         {
 
         }
 
-        private void Form1_Shown(object sender, EventArgs e)
+        private void Form1_Shown_1(object sender, EventArgs e)
         {
             IntiallizeGridColumn();
-
-          
         }
+
 
         private void IntiallizeGridColumn()
         {
@@ -276,21 +270,22 @@ namespace Level02
              myDataGridViewcolumn.Name = "ปีที่";
              DTG01.Columns.Add(myDataGridViewcolumn);*/
 
-         
+
             DataTable myDataTable = new DataTable("MainGrid");
             m_dsmainGrid.Tables.Add(myDataTable);
             DataColumn myDataColumn;
 
             int ProfitPercent = 5;
-            
-           
-                myDataColumn = new DataColumn();
-                myDataColumn.DataType = System.Type.GetType("System.Int32");
-                myDataColumn.ColumnName = "ปีที่";
-                myDataTable.Columns.Add(myDataColumn);
 
-            while (ProfitPercent <= 50)
-            {
+            
+
+            myDataColumn = new DataColumn();
+            myDataColumn.DataType = System.Type.GetType("System.Int32");
+            myDataColumn.ColumnName = "ปีที่";
+            myDataTable.Columns.Add(myDataColumn);
+
+
+            while (ProfitPercent <=50) {
 
                 myDataColumn = new DataColumn();
                 myDataColumn.DataType = System.Type.GetType("System.Int64");
@@ -308,13 +303,15 @@ namespace Level02
                 myDataTable.Columns.Add(myDataColumn);
 
                 ProfitPercent += 5;
-
             }
+            
 
 
             DTG01.DataSource = m_dsmainGrid.Tables["MainGrid"];
 
 
         }
+
+        
     }
 }
