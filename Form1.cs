@@ -273,25 +273,34 @@ namespace Level02
             m_dsMainGrid.Tables.Add(myDataTable);
             DataColumn myDataColumn;
 
+            int ProfitPercent = 5;
+
             myDataColumn = new DataColumn();
             myDataColumn.DataType = System.Type.GetType("System.Int32");
             myDataColumn.ColumnName = "ปีที่";
             myDataTable.Columns.Add(myDataColumn);
 
-            myDataColumn = new DataColumn();
-            myDataColumn.DataType = System.Type.GetType("System.Int64");
-            myDataColumn.ColumnName = "เงินต้นปี 5%";
-            myDataTable.Columns.Add(myDataColumn);
+            while (ProfitPercent <= 50)
+            {
 
-            myDataColumn = new DataColumn();
-            myDataColumn.DataType = System.Type.GetType("System.Int64");
-            myDataColumn.ColumnName = "กำไล 5%";
-            myDataTable.Columns.Add(myDataColumn);
+                myDataColumn = new DataColumn();
+                myDataColumn.DataType = System.Type.GetType("System.Int64");
+                myDataColumn.ColumnName = "เงินต้นปี 5%";
+                myDataTable.Columns.Add(myDataColumn);
 
-            myDataColumn = new DataColumn();
-            myDataColumn.DataType = System.Type.GetType("System.Int64");
-            myDataColumn.ColumnName = "เงินปลายปี 5%";
-            myDataTable.Columns.Add(myDataColumn);
+                myDataColumn = new DataColumn();
+                myDataColumn.DataType = System.Type.GetType("System.Int64");
+                myDataColumn.ColumnName = "กำไล 5%";
+                myDataTable.Columns.Add(myDataColumn);
+
+                myDataColumn = new DataColumn();
+                myDataColumn.DataType = System.Type.GetType("System.Int64");
+                myDataColumn.ColumnName = "เงินปลายปี 5%";
+                myDataTable.Columns.Add(myDataColumn);
+
+                ProfitPercent += 5;
+
+            }
 
             DTG01.DataSource = m_dsMainGrid.Tables["MainGrid"];
         }
