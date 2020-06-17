@@ -172,7 +172,7 @@ namespace Level02
         }
 
         //CheckBox format Type
-      /*  private void tbstart_Leave(object sender, EventArgs e)
+        private void tbstart_Leave(object sender, EventArgs e)
         {
             Int32 Inputstartmoney = 0;
 
@@ -186,9 +186,9 @@ namespace Level02
                 MessageBox.Show("Incorect fomat");
                 //tbstart.Text = "";
             }
-        }*/
+        }
 
-       /* private void tbInvestPeerMonth_Leave(object sender, EventArgs e)
+        private void tbInvestPeerMonth_Leave(object sender, EventArgs e)
         {
             Int32 InputInvespeerMonth = 0;
             try
@@ -200,7 +200,7 @@ namespace Level02
                 MessageBox.Show("Incorect fomat");
                 //tbstart.Text = "";
             }
-        }*/
+        }
 
         private void lboutput_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -285,17 +285,17 @@ namespace Level02
 
                 myDataColumn = new DataColumn();
                 myDataColumn.DataType = System.Type.GetType("System.Int64");
-                myDataColumn.ColumnName = "เงินต้นปี 5%";
+                myDataColumn.ColumnName = "เงินต้นปี (" + ProfitPercent.ToString() +"%)";
                 myDataTable.Columns.Add(myDataColumn);
 
                 myDataColumn = new DataColumn();
                 myDataColumn.DataType = System.Type.GetType("System.Int64");
-                myDataColumn.ColumnName = "กำไล 5%";
+                myDataColumn.ColumnName = "กำไล (" + ProfitPercent.ToString() + "%)";
                 myDataTable.Columns.Add(myDataColumn);
 
                 myDataColumn = new DataColumn();
                 myDataColumn.DataType = System.Type.GetType("System.Int64");
-                myDataColumn.ColumnName = "เงินปลายปี 5%";
+                myDataColumn.ColumnName = "เงินปลายปี(" + ProfitPercent.ToString() + "%)";
                 myDataTable.Columns.Add(myDataColumn);
 
                 ProfitPercent += 5;
