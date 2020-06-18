@@ -19,10 +19,10 @@ namespace Level02
             // output.Text = "ปีที่ 1 \r\n ปีที่ 2";
             Int32 year = 1;
             //Int32 StartMoney = 100000;
-            Int32[] StartMoney = new Int32[21];
-            Int32[] Profitbaht = new Int32[21];
-            Int32 profitPersent = 1;
-            Int32[] EndOfYearMoney = new Int32[21];
+            Int64[] StartMoney = new Int64[21];
+            Int64[] Profitbaht = new Int64[21];
+            Int64 profitPersent = 1;
+            Int64[] EndOfYearMoney = new Int64[21];
 
             int CouterArray = 0;
             String STROUTPUT = "";
@@ -47,22 +47,86 @@ namespace Level02
                 DateTime startTime = System.DateTime.Now;
                 // กำหนดให้เป็นค่าว่างเพื่อเตรียมรอแสดงผลทีเดียว
                 //output.Text = "";
-                lboutput.BeginUpdate();
-                lboutput.Items.Clear();
+                //lboutput.BeginUpdate();
+                //lboutput.Items.Clear();
 
-                // List<string> outPut = new List<string>();
+                //// List<string> outPut = new List<string>();
 
-                STROUTPUT += "";
-                //for (year=1; year <= 100;year++)
+                //STROUTPUT += "";
+                ////for (year=1; year <= 100;year++)
+                ////{
+                ////    output.Text  += "ปี = " + year.ToString() + "\r\n";
+                ////   // output.Text = output.Text + "ปี = "+year.ToString()+ "\r\n";
+                ////}
+                //year = 1;
+                //while (year <= 50)
                 //{
-                //    output.Text  += "ปี = " + year.ToString() + "\r\n";
-                //   // output.Text = output.Text + "ปี = "+year.ToString()+ "\r\n";
+                //    STROUTPUT = "";
+                //    STROUTPUT += "ปี = " + year.ToString("N0");
+                //    profitPersent = 5;
+                //    CouterArray = 0;
+                //    while (profitPersent <= 50)
+                //    {
+                //        if (year == 1)
+                //        {
+
+                //            StartMoney[CouterArray] = inputStartMoney;
+                //        }
+
+                //        Profitbaht[CouterArray] = (Int32)((Decimal)(StartMoney[CouterArray]) * (Decimal)(profitPersent) / (Decimal)(100));
+                //        EndOfYearMoney[CouterArray] = StartMoney[CouterArray] + Profitbaht[CouterArray];
+
+                //        STROUTPUT += "{" +
+                //    ": เงินต้นปี = " + StartMoney[CouterArray].ToString("N0") +
+                //    " : กำไล " + profitPersent.ToString("N0") + "% = " + Profitbaht[CouterArray].ToString("N0") +
+                //    " : เงินปลายปี = " + EndOfYearMoney[CouterArray].ToString("N0") +
+                //        "}";
+
+                //        StartMoney[CouterArray] = EndOfYearMoney[CouterArray];
+                //        profitPersent += 5;
+                //        CouterArray++;
+                //    }
+
+                //    STROUTPUT += "\r\n";
+
+
+
+                //    /*output.Text += "ปี = " + year.ToString("N0") + 
+                //    ": เงินต้นปี = "+ StartMoney.ToString("N0") +
+                //    " : กำไล "+ profitPersent.ToString("N0") + "% = "+ Profitbaht.ToString("N0") +
+                //    " : เงินปลายปี = " + EndOfYearMoney.ToString("N0") +                                
+                //        "\r\n";
+                //    StartMoney = EndOfYearMoney; */
+
+                //    year++;
+
+                //    lboutput.Items.Add(STROUTPUT);
+                //    //outPut.Add(STROUTPUT);
+
                 //}
+                ////กำหนดให้แสดงผลทีเดียวเพื่อลดการ refash หน้าจอทำให้แสดงผลไว
+                ////output.Text = STROUTPUT;
+
+                ////  lboutput.DataSource = outPut;
+
+                //lboutput.EndUpdate();
+
+
+                //Insert to DataGridView
+
+                DataTable myDataTable = m_dsMainGrid.Tables["MainGrid"];
+                DataRow NewDataRow;
+                string ColoumnName = "";
+
+                      
                 year = 1;
-                while (year <= 50)
+                while (year <= 100)
                 {
-                    STROUTPUT = "";
-                    STROUTPUT += "ปี = " + year.ToString("N0");
+
+                    NewDataRow = myDataTable.NewRow();
+                    NewDataRow["ปีที่"] = year;
+
+
                     profitPersent = 5;
                     CouterArray = 0;
                     while (profitPersent <= 50)
@@ -73,49 +137,38 @@ namespace Level02
                             StartMoney[CouterArray] = inputStartMoney;
                         }
 
-                        Profitbaht[CouterArray] = (Int32)((Decimal)(StartMoney[CouterArray]) * (Decimal)(profitPersent) / (Decimal)(100));
+                        Profitbaht[CouterArray] = (Int64)((Decimal)(StartMoney[CouterArray]) * (Decimal)(profitPersent) / (Decimal)(100));
                         EndOfYearMoney[CouterArray] = StartMoney[CouterArray] + Profitbaht[CouterArray];
 
-                        STROUTPUT += "{" +
-                    ": เงินต้นปี = " + StartMoney[CouterArray].ToString("N0") +
-                    " : กำไล " + profitPersent.ToString("N0") + "% = " + Profitbaht[CouterArray].ToString("N0") +
-                    " : เงินปลายปี = " + EndOfYearMoney[CouterArray].ToString("N0") +
-                        "}";
+
+                        ColoumnName = "เงินต้นปี (" + profitPersent.ToString() + "%)";
+                        NewDataRow[ColoumnName] = StartMoney[CouterArray];
+
+                        ColoumnName = "กำไล (" + profitPersent.ToString() + "%)";
+                        NewDataRow[ColoumnName] = Profitbaht[CouterArray];
+
+                        ColoumnName = "เงินปลายปี (" + profitPersent.ToString() + "%)";
+                        NewDataRow[ColoumnName] = EndOfYearMoney[CouterArray];
 
                         StartMoney[CouterArray] = EndOfYearMoney[CouterArray];
                         profitPersent += 5;
                         CouterArray++;
                     }
 
-                    STROUTPUT += "\r\n";
-
-
-
-                    /*output.Text += "ปี = " + year.ToString("N0") + 
-                    ": เงินต้นปี = "+ StartMoney.ToString("N0") +
-                    " : กำไล "+ profitPersent.ToString("N0") + "% = "+ Profitbaht.ToString("N0") +
-                    " : เงินปลายปี = " + EndOfYearMoney.ToString("N0") +                                
-                        "\r\n";
-                    StartMoney = EndOfYearMoney; */
-
+                    myDataTable.Rows.Add(NewDataRow);
                     year++;
 
-                    lboutput.Items.Add(STROUTPUT);
-                    //outPut.Add(STROUTPUT);
+                   
 
                 }
-                //กำหนดให้แสดงผลทีเดียวเพื่อลดการ refash หน้าจอทำให้แสดงผลไว
-                //output.Text = STROUTPUT;
+               
 
-                //  lboutput.DataSource = outPut;
-
-                lboutput.EndUpdate();
                 DateTime endTime = System.DateTime.Now;
                 System.TimeSpan usetime = endTime - startTime;
 
 
 
-                MessageBox.Show("usrTime :" + usetime.TotalSeconds.ToString() + "วินาที :");
+               // MessageBox.Show("usrTime :" + usetime.TotalSeconds.ToString() + "วินาที :");
 
 
 
@@ -285,7 +338,7 @@ namespace Level02
 
                 myDataColumn = new DataColumn();
                 myDataColumn.DataType = System.Type.GetType("System.Int64");
-                myDataColumn.ColumnName = "เงินต้นปี (" + ProfitPercent.ToString() +"%)";
+                myDataColumn.ColumnName = "เงินต้นปี (" + ProfitPercent.ToString() + "%)";
                 myDataTable.Columns.Add(myDataColumn);
 
                 myDataColumn = new DataColumn();
@@ -295,7 +348,7 @@ namespace Level02
 
                 myDataColumn = new DataColumn();
                 myDataColumn.DataType = System.Type.GetType("System.Int64");
-                myDataColumn.ColumnName = "เงินปลายปี(" + ProfitPercent.ToString() + "%)";
+                myDataColumn.ColumnName = "เงินปลายปี (" + ProfitPercent.ToString() + "%)";
                 myDataTable.Columns.Add(myDataColumn);
 
                 ProfitPercent += 5;
